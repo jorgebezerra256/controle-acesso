@@ -54,7 +54,7 @@ if(!function_exists('formExcluir')){
  * @return void
  */
 if(!function_exists('checkPermissao')){
-    protected function checkPermissao(string $nome)
+    function checkPermissao(string $nome)
     {
         if(\Gate::denies($nome)){
             abort(401);
