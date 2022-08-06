@@ -11,14 +11,6 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
-    protected function checkPermissao(string $nome)
-    {
-        if(\Gate::denies($nome)){
-            abort(401);
-            //return redirect()->route('401');
-        }
-    }
-
+    
 }
     			

@@ -27,7 +27,7 @@ class PapeisController extends Controller
      */
     public function index()
     {     
-        $this->checkPermissao('papel.listar');
+        checkPermissao('papel.listar');
 
         $caminhos = [
             ['url' => '/admin', 'titulo' => 'Home'],
@@ -45,7 +45,7 @@ class PapeisController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function get_datatable(){
-        $this->checkPermissao('papel.listar');
+        checkPermissao('papel.listar');
 
         $papeis = Papel::query();
         
@@ -66,7 +66,7 @@ class PapeisController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function get_datatablePapelPermissao($id){   
-        $this->checkPermissao('papel.addpermissao');
+        checkPermissao('papel.addpermissao');
         
         $this->id_papel = $id;
         $papel = Papel::find($id);
@@ -92,7 +92,7 @@ class PapeisController extends Controller
      */
     public function create()
     {
-        $this->checkPermissao('papel.criar');
+        checkPermissao('papel.criar');
 
          $caminhos = [
             ['url' => '/admin', 'titulo' => 'Home'],
@@ -113,7 +113,7 @@ class PapeisController extends Controller
      */
     public function store(Request $request)
     {
-        $this->checkPermissao('papel.criar');
+        checkPermissao('papel.criar');
         
         $papel = $request->all();
 
@@ -132,7 +132,7 @@ class PapeisController extends Controller
      */
     public function edit($id)
     {
-        $this->checkPermissao('papel.atualizar');
+        checkPermissao('papel.atualizar');
 
         if(Papel::find($id)->nome == 'Admin'){
             return redirect()->route('papeis.index');
@@ -160,7 +160,7 @@ class PapeisController extends Controller
      */
     public function update(Request $request, Papel $papel)
     {        
-        $this->checkPermissao('papel.atualizar');
+        checkPermissao('papel.atualizar');
 
         $id = $papel->id;        
         if(Papel::find($id)->nome == 'Admin'){
@@ -187,7 +187,7 @@ class PapeisController extends Controller
      */
     public function destroy($id)
     {
-        $this->checkPermissao('papel.excluir');
+        checkPermissao('papel.excluir');
 
         if(Papel::find($id)->nome == 'Admin'){
             return redirect()->route('papeis.index');
@@ -209,7 +209,7 @@ class PapeisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function permissao($id){   
-        $this->checkPermissao('papel.addpermissao');
+        checkPermissao('papel.addpermissao');
 
         $papel = Papel::find($id);
 
@@ -238,7 +238,7 @@ class PapeisController extends Controller
      */
     public function permissaoStore(Request $request, $id)
     {
-       $this->checkPermissao('papel.addpermissao');
+       checkPermissao('papel.addpermissao');
         
         $papel = Papel::find($id);
         $dados = $request->all();
@@ -259,7 +259,7 @@ class PapeisController extends Controller
      */
     public function permissaoDestroy($id, $permissao_id)
     {
-        $this->checkPermissao('papel.delpermissao');
+        checkPermissao('papel.delpermissao');
 
         $papel = Papel::find($id);        
         $permissao = Permissao::find($permissao_id);

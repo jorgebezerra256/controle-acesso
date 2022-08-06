@@ -46,3 +46,18 @@ if(!function_exists('formExcluir')){
         return $html;
     }
 }
+
+/**
+ * Valida permissão de usuário
+ * 
+ * @param string $nome
+ * @return void
+ */
+if(!function_exists('checkPermissao')){
+    protected function checkPermissao(string $nome)
+    {
+        if(\Gate::denies($nome)){
+            abort(401);
+        }
+    }
+}

@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $this->checkPermissao('usuario.listar');
+        checkPermissao('usuario.listar');
 
         $caminhos = [
             ['url' => '/admin', 'titulo' => 'Home'],
@@ -41,7 +41,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function papel($id){  
-        $this->checkPermissao('usuario.addpapel');
+        checkPermissao('usuario.addpapel');
     
         $caminhos = [
             ['url' => '/admin', 'titulo' => 'Home'],
@@ -64,7 +64,7 @@ class UserController extends Controller
      */
     public function papelStore(Request $request, $id)
     {
-        $this->checkPermissao('usuario.addpapel');
+        checkPermissao('usuario.addpapel');
         
         $usuario = User::find($id);
         $dados = $request->all();
@@ -83,7 +83,7 @@ class UserController extends Controller
      */
     public function papelDestroy($id, $papel_id)
     {
-        $this->checkPermissao('usuario.delpapel');
+        checkPermissao('usuario.delpapel');
 
         $usuario = User::find($id);        
         $papel = Papel::find($papel_id);
@@ -101,7 +101,7 @@ class UserController extends Controller
      */
     public function get_datatable(){
 
-        $this->checkPermissao('usuario.listar');
+        checkPermissao('usuario.listar');
 
         $users = User::query();
         
@@ -127,7 +127,7 @@ class UserController extends Controller
      */
     public function get_datatableUsuarioPapel($user){   
 
-        $this->checkPermissao('usuario.addpapel');
+        checkPermissao('usuario.addpapel');
 
         //usuario             
         $usuario = User::where('id', '=', $user)->first();        

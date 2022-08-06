@@ -17,7 +17,7 @@ class PermissoesController extends Controller
      */
     public function index()
     {
-        $this->checkPermissao('permissao.listar');
+        checkPermissao('permissao.listar');
 
         $caminhos = [
             ['url' => '/admin', 'titulo' => 'Home'],
@@ -35,7 +35,7 @@ class PermissoesController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function get_datatable(){
-        $this->checkPermissao('permissao.listar');
+        checkPermissao('permissao.listar');
 
         $permissoes = Permissao::query();
         
@@ -52,7 +52,7 @@ class PermissoesController extends Controller
      */
     public function create()
     {
-        $this->checkPermissao('permissao.criar');
+        checkPermissao('permissao.criar');
 
         $caminhos = [
             ['url' => '/admin', 'titulo' => 'Home'],
@@ -73,7 +73,7 @@ class PermissoesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->checkPermissao('permissao.criar');
+        checkPermissao('permissao.criar');
 
         $permissao = $request->all();
         Permissao::create($permissao);
@@ -90,7 +90,7 @@ class PermissoesController extends Controller
      */
     public function edit($id)
     {
-        $this->checkPermissao('permissao.atualizar');
+        checkPermissao('permissao.atualizar');
 
         $permissao = Permissao::find($id);
 
@@ -114,7 +114,7 @@ class PermissoesController extends Controller
      */
     public function update(Request $request, Permissao $permissao)
     {                
-        $this->checkPermissao('permissao.atualizar');
+        checkPermissao('permissao.atualizar');
 
         $permissao->update($request->all());
         
@@ -132,7 +132,7 @@ class PermissoesController extends Controller
      */
     public function destroy($id)
     {
-        $this->checkPermissao('permissao.excluir');
+        checkPermissao('permissao.excluir');
 
         Permissao::find($id)->delete();      
         return redirect()
