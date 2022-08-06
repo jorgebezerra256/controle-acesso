@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  composer:
+    container_name: composer    
+    image: composer:2.3.10
+    #expose:
+    #  - "8000"
+    working_dir: /controle-acesso
+    volumes:
+      - ./:/controle-acesso
+    
