@@ -109,11 +109,11 @@ class PermissoesRouteTest extends TestFeature
         $permissao = Permissao::factory()
         ->count(10)
         ->create();
-
-        $totalPermissoes = Permissao::all()->count();
-
+        
         $response = $this->sessaoPadrao()
         ->post('/admin/permissoes/get_datatable');
+
+        $totalPermissoes = Permissao::all()->count();
 
         
         $response->assertStatus(200)
