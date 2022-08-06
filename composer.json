@@ -1,0 +1,59 @@
+{
+    "name": "jorge/controle_acesso",
+    "description": "Pacote para controle de acesso, baseado em papel/permissão, inclui interfaces gráficas em AdminLTE",
+    "type": "package",
+    "license": "mit",
+    "authors": [        
+        {
+            "name": "Jorge Araújo bezerra",
+            "email": "jorge.bezerra256@gmail.com"
+        }
+    ],
+    "prefer-stable": true,
+    "autoload": {        
+        "psr-4": {
+            "ControleAcesso\\" : "src/",
+            "ControleAcesso\\Database\\Factories\\" : "database/factories/",
+            "ControleAcesso\\Database\\Seeders\\" : "database/seeders/"
+        }
+    },
+    "autoload-dev" : {
+        "psr-4": {
+            "ControleAcesso\\Tests\\" : "tests"
+        },
+        "files": [
+            "src/Helpers/Helper.php"
+        ]
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "owen-it/laravel-auditing": "^12.0",
+        "acacha/admin-lte-template-laravel": "8.*",        
+        "laravelcollective/html": "^6.2.1",
+        "yajra/laravel-datatables-oracle": "^9.18.0"
+    },
+    "require-dev": {
+        "laravel/framework": "^8.0",
+        "phpunit/phpunit": "^9.5.4",
+        "orchestra/testbench": "^6.0"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php ./vendor/bin/testbench package:discover --ansi"
+        ],
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-f": "vendor\\bin\\phpunit --colors=always --filter"
+    },
+    "extra": {
+        "laravel" : {
+            "providers" : [
+                "ControleAcesso\\Providers\\ControleAcessoServiceProvider",
+                "ControleAcesso\\Providers\\AuthServiceProvider",
+                "Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider"
+            ],
+            "alias" : {
+                "AdminLTE" : "Acacha\\AdminLTETemplateLaravel\\Facades\\AdminLTE"                
+            }            
+        }
+    }
+}
