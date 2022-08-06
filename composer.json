@@ -1,5 +1,5 @@
 {
-    "name": "jorge/controle_acesso",
+    "name": "jorgebezerra/controle_acesso",
     "description": "Pacote para controle de acesso, baseado em papel/permissão, inclui interfaces gráficas em AdminLTE",
     "type": "package",
     "license": "mit",
