@@ -83,18 +83,4 @@ abstract class TestCase extends BaseTestCase
         return 'America/Cuiaba';
     }
         
-    /**
-     * Criar os papeis e permissões e disponibiliza para uso
-     * 
-     */
-    public function carregarPermissoes(){
-        $this->artisan("db:seed", ['--class' => 'ControleAcesso\\Database\\Seeders\\DatabaseSeeder']);
-
-        $permissoes = Permissao::with('papeis')->get();
-        foreach ($permissoes as $permissao) {            
-            \Gate::define($permissao->nome, function($user) use ($permissao){
-                return $user->eAdmin() || $user->temUmPapelDestes($permissao->papeis);
-            });
-        }
-    }    
 }
