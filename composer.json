@@ -14,16 +14,17 @@
         "psr-4": {
             "ControleAcesso\\" : "src/",
             "ControleAcesso\\Database\\Factories\\" : "database/factories/",
-            "ControleAcesso\\Database\\Seeders\\" : "database/seeders/"
-        }
-    },
-    "autoload-dev" : {
-        "psr-4": {
-            "ControleAcesso\\Tests\\" : "tests"
+            "ControleAcesso\\Database\\Seeders\\" : "database/seeders/",
+            "ControleAcesso\\Tests\\Concerns\\" : "tests/Concrens/"
         },
         "files": [
             "src/Helpers/Helper.php"
         ]
+    },
+    "autoload-dev" : {
+        "psr-4": {
+            "ControleAcesso\\Tests\\" : "tests"
+        }        
     },
     "require": {
         "php": ">=7.0.0",
