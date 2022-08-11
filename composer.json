@@ -15,7 +15,7 @@
             "ControleAcesso\\" : "src/",
             "ControleAcesso\\Database\\Factories\\" : "database/factories/",
             "ControleAcesso\\Database\\Seeders\\" : "database/seeders/",
-            "ControleAcesso\\Tests\\Concerns\\" : "tests/Concrens/"
+            "ControleAcesso\\Tests\\Concerns\\" : "tests/Concerns/"
         },
         "files": [
             "src/Helpers/Helper.php"
