@@ -16,3 +16,11 @@ Em uma view para adicionar o menu chame-o da seguinte foram:
 ```bash
 ca::sidebar
 ```
+
+# Uso
+Cadaste as permissões e os papeis, atribua permissões a papeis.
+
+Verificar se usuário autenticado possui permissão:
+```bash
+checkPermissao('papel.delpermissao');
+```
