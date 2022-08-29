@@ -61,3 +61,26 @@ if(!function_exists('checkPermissao')){
         }
     }
 }
+
+/**
+ * Dado um array de permissões válida se usuário possui pelo menos uma delas
+ * 
+ * @param array $permissoes
+ * @return void
+ */
+if(!function_exists('checkPermissoes')){
+    function checkPermissoes(array $permissoes)
+    {
+        $temPermissao = false;
+        foreach ($permissoes as $permissao) {
+            $temPermissao = \Auth::user()->hasRole($permissao);
+            if($temPermissao) {
+                break;
+            }
+        }
+
+        if (!$temPermissao) {
+            abort(401);
+        }
+    }
+}
