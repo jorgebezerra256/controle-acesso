@@ -72,11 +72,15 @@ if(!function_exists('checkPermissoes')){
     function checkPermissoes(array $permissoes)
     {
         $temPermissao = false;
-        foreach ($permissoes as $permissao) {
-            $temPermissao = \Auth::user()->hasRole($permissao);
-            if($temPermissao) {
-                break;
+        if(!\Auth::user()->eAdmin()){
+            foreach ($permissoes as $permissao) {
+                $temPermissao = \Auth::user()->hasRole($permissao);
+                if($temPermissao) {
+                    break;
+                }
             }
+        }else{
+            $temPermissao = true;
         }
 
         if (!$temPermissao) {
